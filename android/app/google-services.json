@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "557148011789",
+    "project_id": "curare-953db",
+    "storage_bucket": "curare-953db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557148011789:android:bd8ddb165134fe1b568444",
+        "android_client_info": {
+          "package_name": "com.example.curare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557148011789-0mt3ti9l1k7armgv56vsrcqqpgaj34pi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbu5HppezGGgja6hlq-ziO6zK9-GzDmTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557148011789-0mt3ti9l1k7armgv56vsrcqqpgaj34pi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "557148011789-cogcbbls9652312h91uerpr1oknqar9h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.curare"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
