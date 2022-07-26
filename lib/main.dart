@@ -1,11 +1,23 @@
 import 'package:curare/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:curare/screens/signin_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyAbu5HppezGGgja6hlq-ziO6zK9-GzDmTw",
+            projectId: "curare-953db",
+            storageBucket: "curare-953db.appspot.com",
+            messagingSenderId: "557148011789",
+            appId: "1:557148011789:android:bd8ddb165134fe1b568444"));
+  } else {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+  }
   runApp(const MyApp());
 }
 
