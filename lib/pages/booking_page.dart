@@ -44,10 +44,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                         Container(
                           height: 100,
                           width: 200,
-                          //child: Lottie.asset('assets/hos.json'),
-                          child: Lottie.network(
-                              'https://assets9.lottiefiles.com/packages/lf20_cemdwswi.json',
-                              animate: false),
+                          child: Image.asset("lib/assets/neurology.png"),
                         ),
                         Text(
                           'Neurologist',
@@ -85,10 +82,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                         Container(
                           height: 112,
                           width: 200,
-                          //child: Lottie.asset('assets/hos.json'),
-                          child: Lottie.network(
-                              'https://assets5.lottiefiles.com/packages/lf20_ej9qnvlt/Pediatra.json',
-                              animate: false),
+                          child: Image.asset("lib/assets/pediatrician.png"),
                         ),
                         Text(
                           'Pediatrician',
@@ -126,10 +120,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                         Container(
                           height: 112,
                           width: 200,
-                          //child: Lottie.asset('assets/hos.json'),
-                          child: Lottie.network(
-                              'https://assets4.lottiefiles.com/packages/lf20_lipvgbdt.json',
-                              animate: false),
+                          child: Image.asset("lib/assets/gynecologist.png"),
                         ),
                         Text(
                           'Gynecologist',
@@ -167,10 +158,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                         Container(
                           height: 112,
                           width: 200,
-                          //child: Lottie.asset('assets/hos.json'),
-                          child: Lottie.network(
-                              'https://assets8.lottiefiles.com/packages/lf20_0ssane8p.json',
-                              animate: false),
+                          child: Image.asset("lib/assets/doctor.png"),
                         ),
                         Text(
                           'Cardiologist',
@@ -208,10 +196,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                         Container(
                           height: 112,
                           width: 200,
-                          //child: Lottie.asset('assets/hos.json'),
-                          child: Lottie.network(
-                              'https://assets4.lottiefiles.com/packages/lf20_gnh15vxc.json',
-                              animate: false),
+                          child: Image.asset("lib/assets/phy.png"),
                         ),
                         Text(
                           'Physician',
