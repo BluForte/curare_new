@@ -1,26 +1,23 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirestoreHelper {
-
   static Stream<List<UserModel>> read() {
     final userCollection = FirebaseFirestore.instance.collection("users");
-    return userCollection.snapshots().map((querySnapshot) => querySnapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList());
-
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList());
   }
 
   static Future<UserModel> readUser() async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
-  
-    var data = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
+    var data =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
     UserModel _user = UserModel.fromSnapshot(data);
-    
+
     return _user;
-
-
   }
 
   static Future create(UserModel user) async {
@@ -30,11 +27,8 @@ class FirestoreHelper {
     final uid = FirebaseAuth.instance.currentUser!.uid;
     final docRef = userCollection.doc(uid);
 
-    final newUser = UserModel(
-      pid: uid,
-        pname: user.pname,
-        pno: user.pno
-    ).toJson();
+    final newUser =
+        UserModel(pid: uid, pname: user.pname, pno: user.pno).toJson();
 
     try {
       await docRef.set(newUser);
@@ -48,11 +42,8 @@ class FirestoreHelper {
 
     final docRef = userCollection.doc(user.pid);
 
-    final newUser = UserModel(
-        pid: user.pid,
-        pname: user.pname,
-        pno: user.pno
-    ).toJson();
+    final newUser =
+        UserModel(pid: user.pid, pname: user.pname, pno: user.pno).toJson();
 
     try {
       await docRef.update(newUser);
@@ -65,11 +56,7 @@ class FirestoreHelper {
     final userCollection = FirebaseFirestore.instance.collection("users");
 
     final docRef = userCollection.doc(user.pid).delete();
-
   }
-
-
-
 }
 
 // class FirestoreHelper1 {
