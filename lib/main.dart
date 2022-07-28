@@ -1,4 +1,6 @@
+import 'package:curare/data/admin_pages/admin_home.dart';
 import 'package:curare/firebase_options.dart';
+import 'package:curare/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:curare/screens/signin_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
