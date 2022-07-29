@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/admin_pages/edit_hospital.dart';
+import 'package:curare/data/remote_data_source/firestore_helper.dart';
 import 'package:curare/data/admin_pages/hospital_page.dart';
 import 'package:curare/data/admin_pages/tokens.dart';
 import 'package:curare/screens/signin_screen.dart';
@@ -16,7 +18,28 @@ class AdminHome extends StatefulWidget {
 }
 
 class _AdminHomeState extends State<AdminHome> {
+  // document_Id
+  List<String> docsId = [];
+
+  // get document_Id
+  Future getDocId() async {
+    await FirebaseFirestore.instance
+        .collection('Hospitals')
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((element) {}));
+  }
+
   @override
+  void initState() {
+    super.initState();
+    _getdetailsFromFirestore();
+  }
+
+  _getdetailsFromFirestore() async {
+    final user = await FirestoreHelper.readUser();
+    setState(() {});
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

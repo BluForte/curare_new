@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/admin_pages/constants.dart';
 import 'package:curare/screens/signin_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +19,19 @@ class HospitalDetails extends StatefulWidget {
 }
 
 class _HospitalDetailsState extends State<HospitalDetails> {
+  final _departmentController = TextEditingController();
+  @override
+  void disposal() {
+    _departmentController.dispose();
+    super.dispose();
+  }
+
+  Future addHospitalDetails(String department) async {
+    await FirebaseFirestore.instance.collection('Hospitals').add({
+      'Departments': department,
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

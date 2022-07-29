@@ -28,7 +28,9 @@ class _TokensPageState extends State<TokensPage> {
               ),
             );
           },
-          icon: Icon(FontAwesome.left_big),
+          icon: Icon(
+            FontAwesome.left_big,
+          ),
         ),
       ),
       backgroundColor: Colors.grey[200],

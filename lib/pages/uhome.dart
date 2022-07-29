@@ -28,11 +28,6 @@ class _Mypage1State extends State<Mypage1> {
     _getUserFromFirestore();
   }
 
-  // Future<ParseUser?> getUser() async {
-  //   currentUser = await ParseUser.currentUser() as ParseUser?;
-  //   return currentUser;
-  // }
-
   _getUserFromFirestore() async {
     final user = await FirestoreHelper.readUser();
     setState(() {
