@@ -1,5 +1,11 @@
+
 import 'package:curare/data/models/hos_provider.dart';
+
+import 'package:curare/data/admin_pages/admin_home.dart';
+
 import 'package:curare/firebase_options.dart';
+import 'package:curare/pages/profile_2.dart';
+import 'package:curare/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:curare/screens/signin_screen.dart';
 import 'package:flutter/foundation.dart';

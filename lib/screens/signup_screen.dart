@@ -21,10 +21,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   
   TextEditingController _pname=TextEditingController();
   TextEditingController _pno=TextEditingController();
+  TextEditingController _page=TextEditingController();
+  TextEditingController _psex=TextEditingController();
   @override
   void dispose() {
     _pname.dispose();
     _pno.dispose();
+    _page.dispose();
+    _psex.dispose();
     super.dispose();
   }
   @override
@@ -64,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Email Id", Icons.person_outline, false,
+                reusableTextField("Enter Email Id", Icons.email, false,
                     _emailTextController),
                 const SizedBox(
                   height: 20,
@@ -74,8 +78,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Phone Number", Icons.person_outline, false,
+                reusableTextField("Phone Number", Icons.call,false,
                     _pno),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: 130,
+                      child: reusableTextField("Age", Icons.people, false,
+                          _page),
+                    ),
+                    SizedBox(
+                      width: 130,
+                      child: reusableTextField("sex", Icons.wc, false,
+                          _psex),
+                    ),
+                  ],
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -95,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });
-                    await FirestoreHelper.create(UserModel(pname: _pname.text, pno: _pno.text));
+                    await FirestoreHelper.create(UserModel(pname: _pname.text, pno: _pno.text, page: _page.text, psex: _psex.text));
                 
                   }),
                 )

@@ -31,15 +31,11 @@ class _Mypage1State extends State<Mypage1> {
     _getUserFromFirestore();
   }
 
-  // Future<ParseUser?> getUser() async {
-  //   currentUser = await ParseUser.currentUser() as ParseUser?;
-  //   return currentUser;
-  // }
-
   _getUserFromFirestore() async {
     final user = await FirestoreHelper.readUser();
     setState(() {
       username = user.pname;
+      print(username);
     });
   }
 
@@ -106,7 +102,9 @@ class _Mypage1State extends State<Mypage1> {
                 default:
                   if (snapshot.hasData) {
                     return Scaffold(
+
                       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+
                       body: SafeArea(
                         child: SingleChildScrollView(
                           child: Column(
@@ -114,6 +112,7 @@ class _Mypage1State extends State<Mypage1> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+
                                   const SizedBox(
                                     width: 10,
                                   ),
@@ -124,7 +123,10 @@ class _Mypage1State extends State<Mypage1> {
                                   ),
                                   const SizedBox(
                                     width: 150,
-                                  ),
+
+                                  
+                                 
+                                
                                   ElevatedButton(
                                     child: const Text('Logout'),
                                     onPressed: () {
@@ -136,11 +138,14 @@ class _Mypage1State extends State<Mypage1> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
+
                                                     const SignInScreen()));
                                       });
                                     },
                                   ),
-                                  const SizedBox(
+                                
+                                  SizedBox(
+
                                     width: 10,
                                   )
                                 ],
@@ -153,6 +158,7 @@ class _Mypage1State extends State<Mypage1> {
                                   children: [
                                     if (snapshot.hasData)
                                       Text(
+
                                           // Greeting with username
                                           username == null
                                               ? 'Hi '
@@ -172,12 +178,14 @@ class _Mypage1State extends State<Mypage1> {
                                       child: Image.asset(
                                         'lib/assets/children.png',
                                         scale: 5,
-                                      ),
+
+                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                               //for animated box
+
                               const SizedBox(height: 1),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -186,6 +194,7 @@ class _Mypage1State extends State<Mypage1> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.white,
+
                                     boxShadow: [
                                       BoxShadow(
                                         color: const Color.fromARGB(
@@ -200,7 +209,10 @@ class _Mypage1State extends State<Mypage1> {
                                   child: Row(
                                     children: [
                                       Container(
+
                                         height: 170,
+
+
                                         width: 210,
                                         //child: Lottie.asset('assets/hos.json'),
                                         child: Lottie.network(
@@ -212,17 +224,23 @@ class _Mypage1State extends State<Mypage1> {
                                             'How do u feel today',
                                             style: TextStyle(
                                               fontSize: 15,
+
                                             ),
                                           ),
                                           Center(
                                             child: Text('"We Exist To Care"'),
                                           ),
                                         ],
-                                      )
-                                    ],
+                                      ),
+                                      ],
+
+                                          
+                                       
                                   ),
                                 ),
                               ),
+                            
+
                               const SizedBox(height: 1),
 
                               //cards for articles
@@ -232,24 +250,29 @@ class _Mypage1State extends State<Mypage1> {
                                   'Top Hospitals For You ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
+
                                     fontSize: 20,
                                   ),
                                 ),
                               ),
                               const CardsWidget(),
 
-                              //news
+
+                         
+
                             ],
                           ),
                         ),
                       ),
                       bottomNavigationBar: CurvedNavigationBar(
+
                         height: 45,
                         index: index,
                         items: items,
                         backgroundColor: Colors.white10,
                         color: const Color.fromARGB(255, 85, 164, 244),
                         animationDuration: const Duration(milliseconds: 300),
+
                         onTap: (index) {
                           //Handle button tap
                         },

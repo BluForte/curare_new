@@ -11,9 +11,9 @@ class UserModel3{
     var snapshot = snap.data() as Map<String, dynamic>;
 
     return UserModel3(
-      dname: snapshot['Doctor Name'],
-      ddes: snapshot['Designation'],
-      did: snapshot['doctor Id'],
+      dname: snapshot['name'],
+      ddes: snapshot['designation'],
+      did: snapshot['did'],
     );
   }
 
