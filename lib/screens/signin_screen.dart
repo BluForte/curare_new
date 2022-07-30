@@ -1,3 +1,5 @@
+import 'package:curare/data/models/hos_provider.dart';
+import 'package:curare/data/models/hospital_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:curare/reusable_widgets/reusable_widget.dart';
 //import 'package:curare/screens/home_screen.dart';
@@ -6,6 +8,7 @@ import 'package:curare/screens/signup_screen.dart';
 import 'package:curare/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:curare/pages/uhome.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -17,9 +20,16 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
-  
+
+  //database  hospital ann
   @override
   Widget build(BuildContext context) {
+    Provider.of<HosModelDetailsProvider>(context)
+        .getData(hospitalId: "FD31aWZF21JEV9doQCtE");
+
+    //   Provider.of<HosModelDetailsProvider>(context)
+    //  .getData(hospitalId: "KiJvPuUq1vvmChUDxA43");
+
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -36,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                Image.asset("lib/assets/logo1.png",scale: 3),
+                Image.asset("lib/assets/logo1.png", scale: 3),
                 const SizedBox(
                   height: 30,
                 ),

@@ -1,4 +1,5 @@
 import 'package:curare/data/remote_data_source/firestore_helper.dart';
+import 'package:curare/pages/token_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,8 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:curare/screens/signin_screen.dart';
-//import '../login_page.dart';
-import 'booking_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/link.dart';
 import 'cards.dart';
 
 class Mypage1 extends StatefulWidget {
@@ -43,27 +46,45 @@ class _Mypage1State extends State<Mypage1> {
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      Icon(
-        Icons.home,
-        size: 30,
-        color: Colors.white,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Mypage1(),
+              ));
+        },
+        child: const Icon(
+          Icons.home,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
-      Icon(
+      const Icon(
         Icons.search,
         size: 30,
         color: Colors.white,
       ),
-      Icon(
-        Icons.generating_tokens,
-        size: 30,
-        color: Colors.white,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyCardWidget(),
+              ));
+        },
+        child: const Icon(
+          Icons.generating_tokens,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
-      Icon(
+      const Icon(
         Icons.question_answer,
         size: 30,
         color: Colors.white,
       ),
-      Icon(
+      const Icon(
         Icons.person,
         size: 30,
         color: Colors.white,
@@ -80,206 +101,165 @@ class _Mypage1State extends State<Mypage1> {
                     child: Container(
                         width: 100,
                         height: 100,
-                        child: CircularProgressIndicator()),
+                        child: const CircularProgressIndicator()),
                   );
                 default:
-                  if(snapshot.hasData){
-                  return Scaffold(
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                    body: SafeArea(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                SizedBox(width: 10,),
-                                 Image.asset("lib/assets/logo1.png",height: 60,width: 80,),
-                                 SizedBox(width: 210,),
-                                ElevatedButton(
-                                  child: const Text('Logout'),
-                                  onPressed: () {
-            FirebaseAuth.instance.signOut().then((value) {
-              print("Signed Out");
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignInScreen()));
-            });
-          },
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                  if (snapshot.hasData) {
+                    return Scaffold(
+                      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                      body: SafeArea(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  if(snapshot.hasData)
-                                  Text(
-                                    // Greeting with username
-                                    username == null ? 
-                                    'Hi ' : 'Hi $username',
-                                  
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  const SizedBox(
+                                    width: 10,
                                   ),
-                                  //Icon
-                                  Container(
-                                    padding: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 90, 174, 238),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    child: Image.asset(
-                                      'lib/assets/woman.png',
-                                      scale: 7.8,
-                                    ),
+                                  Image.asset(
+                                    "lib/assets/logo1.png",
+                                    height: 100,
+                                    width: 150,
                                   ),
+                                  const SizedBox(
+                                    width: 150,
+                                  ),
+                                  ElevatedButton(
+                                    child: const Text('Logout'),
+                                    onPressed: () {
+                                      FirebaseAuth.instance
+                                          .signOut()
+                                          .then((value) {
+                                        print("Signed Out");
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const SignInScreen()));
+                                      });
+                                    },
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
                                 ],
                               ),
-                            ),
-                            //for animated box
-                            SizedBox(height: 5),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                padding: EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 3,
-                                      blurRadius: 10,
-                                      offset: Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
+                              Padding(
+                                padding: const EdgeInsets.all(10),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
+                                    if (snapshot.hasData)
+                                      Text(
+                                          // Greeting with username
+                                          username == null
+                                              ? 'Hi '
+                                              : 'Hi $username',
+                                          style: GoogleFonts.dancingScript(
+                                              fontSize: 29,
+                                              fontWeight: FontWeight.bold)),
+                                    //Icon
                                     Container(
-                                      height: 180,
-                                      width: 210,
-                                      //child: Lottie.asset('assets/hos.json'),
-                                      child: Lottie.network(
-                                          'https://assets4.lottiefiles.com/packages/lf20_wdXBRc.json'),
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromARGB(
+                                                255, 192, 145, 220)
+                                            .withOpacity(0.5),
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                      child: Image.asset(
+                                        'lib/assets/children.png',
+                                        scale: 5,
+                                      ),
                                     ),
-                                    Column(
-                                      children: const [
-                                        Text(
-                                          'How do u feel today',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                        Center(
-                                          child: Text('"We Exist To Care"'),
-                                        ),
-                                      ],
-                                    )
                                   ],
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 5),
-                            Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Container(
-                                padding: EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.5),
+                              //for animated box
+                              const SizedBox(height: 1),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: const Color.fromARGB(
+                                                255, 192, 145, 220)
+                                            .withOpacity(0.5),
                                         spreadRadius: 3,
                                         blurRadius: 10,
-                                        offset: Offset(0, 3),
+                                        offset: const Offset(0, 3),
                                       ),
-                                    ]),
-                                child: Row(
-                                  children: [
-                                    SizedBox(width: 80),
-                                    Container(
-                                      height: 150,
-                                      width: 200,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      BookingWidget()));
-                                        },
-                                        child: Container(
-                                          child: Center(
-                                            child: Column(
-                                              children: [
-                                                Icon(Icons.token_outlined),
-                                                Text(
-                                                  'BookAppointment',
-                                                  textAlign: TextAlign.center,
-                                                  style:
-                                                      TextStyle(fontSize: 22),
-                                                ),
-                                                Container(
-                                                  height: 90,
-                                                  width: 200,
-                                                  //child: Lottie.asset('assets/hos.json'),
-                                                  child: Lottie.network(
-                                                      'https://assets6.lottiefiles.com/private_files/lf30_BP4Us7.json',
-                                                      animate: false),
-                                                ),
-                                              ],
+                                    ],
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        height: 170,
+                                        width: 210,
+                                        //child: Lottie.asset('assets/hos.json'),
+                                        child: Lottie.network(
+                                            'https://assets4.lottiefiles.com/packages/lf20_wdXBRc.json'),
+                                      ),
+                                      Column(
+                                        children: const [
+                                          Text(
+                                            'How do u feel today',
+                                            style: TextStyle(
+                                              fontSize: 15,
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                          Center(
+                                            child: Text('"We Exist To Care"'),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
+                              const SizedBox(height: 1),
 
-                            //cards for articles
-                            Padding(
-                              padding: EdgeInsets.only(top: 10, left: 10),
-                              child: Text(
-                                'Top picks for you',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                              //cards for articles
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Top Hospitals For You ',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
-                            ),
-                            CardsWidget(),
-                          ],
+                              const CardsWidget(),
+
+                              //news
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    bottomNavigationBar: CurvedNavigationBar(
-                      height: 50,
-                      index: index,
-                      items: items,
-                      backgroundColor: Colors.white10,
-                      color: Color.fromARGB(255, 85, 164, 244),
-                      animationDuration: Duration(milliseconds: 300),
-                      onTap: (index) {
-                        //Handle button tap
-                      },
-                    ),
-                  );
-                  }
-                  else if(snapshot.hasError)
-                  {
+                      bottomNavigationBar: CurvedNavigationBar(
+                        height: 45,
+                        index: index,
+                        items: items,
+                        backgroundColor: Colors.white10,
+                        color: const Color.fromARGB(255, 85, 164, 244),
+                        animationDuration: const Duration(milliseconds: 300),
+                        onTap: (index) {
+                          //Handle button tap
+                        },
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
                     return Center(child: Text(snapshot.error.toString()));
                   }
 
-                  return SignInScreen();
+                  return const SignInScreen();
               }
             }));
   }
@@ -294,7 +274,7 @@ class _Mypage1State extends State<Mypage1> {
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => SignInScreen()),
+              MaterialPageRoute(builder: (context) => const SignInScreen()),
               (Route<dynamic> route) => false,
             );
           });
@@ -317,7 +297,7 @@ class Message {
           title: const Text("Success!"),
           content: Text(message),
           actions: <Widget>[
-            new ElevatedButton(
+            ElevatedButton(
               child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -343,7 +323,7 @@ class Message {
           title: const Text("Error!"),
           content: Text(message),
           actions: <Widget>[
-            new ElevatedButton(
+            ElevatedButton(
               child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
