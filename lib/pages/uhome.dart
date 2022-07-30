@@ -89,25 +89,20 @@ class _Mypage1State extends State<Mypage1> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-<<<<<<< HEAD
-                                  SizedBox(
-                                    width: 10,
-=======
                                   
-                                  if(snapshot.hasData)
+                                  // if(snapshot.hasData)
                                   
-                                  Text(
+                                  // Text(
                                    
-                                    // Greeting with username
-                                    username == null ? 
-                                    'Hi ' : 'Hi $username',
+                                  //   // Greeting with username
+                                  //   username == null ? 
+                                  //   'Hi ' : 'Hi $username',
                                   
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
->>>>>>> anson
-                                  ),
+                                  //   style: TextStyle(
+                                  //     fontSize: 24,
+                                  //     fontWeight: FontWeight.bold,
+                                  //   ),
+                                  // ),
                                   Image.asset(
                                     "lib/assets/logo1.png",
                                     height: 60,
