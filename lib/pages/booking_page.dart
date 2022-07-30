@@ -33,6 +33,26 @@ class _BookingWidgetState extends State<BookingWidget> {
                 color: Color.fromARGB(255, 228, 220, 220),
                 borderRadius: BorderRadius.circular(30),
               ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 25),
+                  Text(
+                    h1.desc,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              height: 150,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 228, 220, 220),
+                borderRadius: BorderRadius.circular(30),
+              ),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
