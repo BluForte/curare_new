@@ -1,5 +1,10 @@
+
+import 'package:curare/data/models/hos_provider.dart';
+import 'package:curare/data/models/hospital_provider.dart';
+
 import 'package:curare/data/admin_pages/admin_home.dart';
 import 'package:curare/pages/auth_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:curare/reusable_widgets/reusable_widget.dart';
 //import 'package:curare/screens/home_screen.dart';
@@ -8,6 +13,7 @@ import 'package:curare/screens/signup_screen.dart';
 import 'package:curare/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:curare/pages/uhome.dart';
+import 'package:provider/provider.dart';
 
 import '../data/remote_data_source/firestore_helper.dart';
 
@@ -21,7 +27,9 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
+
   String? username;
+
   @override
   _getUserFromFirestore() async {
     final user = await FirestoreHelper.readUser();
@@ -31,6 +39,12 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Widget build(BuildContext context) {
+    Provider.of<HosModelDetailsProvider>(context)
+        .getData(hospitalId: "FD31aWZF21JEV9doQCtE");
+
+    //   Provider.of<HosModelDetailsProvider>(context)
+    //  .getData(hospitalId: "KiJvPuUq1vvmChUDxA43");
+
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,

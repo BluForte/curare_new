@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:curare/data/models/user_model2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 
 class FirestoreHelper2 {
@@ -8,6 +10,21 @@ class FirestoreHelper2 {
     return userCollection.snapshots().map((querySnapshot) =>
         querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
   }
+
+//   //firebase for hospital appbar(Ann)
+//   static Future<HospitalModel>getDescAndName() async{
+//   DocumentSnapshot snap = await FirebaseFirestore
+//   .collection("Hospitals")
+//   .doc(FirebaseAuth.currentUser!.uid)
+//   .get();
+
+// HospitalModel hospitalModel = HospitalModel.getModelFromJson((
+//   snap.data()as dynamic),
+
+// );
+// return hospitalModel;
+
+// }
 
   // static Future<UserModel2> readUser() async {
   //   //final uid = FirebaseAuth.instance.currentUser!.uid;
@@ -58,4 +75,4 @@ class FirestoreHelper2 {
 
 //     final docRef = userCollection.doc(user.did).delete();
 //   }
- }
+}
