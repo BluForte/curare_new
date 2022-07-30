@@ -2,7 +2,7 @@ import 'package:curare/data/remote_data_source/firestore_helper.dart';
 import 'package:curare/pages/token_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -10,7 +10,7 @@ import 'package:curare/screens/signin_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/link.dart';
+
 import 'cards.dart';
 
 class Mypage1 extends StatefulWidget {
@@ -102,54 +102,44 @@ class _Mypage1State extends State<Mypage1> {
                 default:
                   if (snapshot.hasData) {
                     return Scaffold(
-
                       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-
                       body: SafeArea(
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Image.asset(
-                                    "lib/assets/logo1.png",
-                                    height: 100,
-                                    width: 150,
-                                  ),
-                                  const SizedBox(
-                                    width: 150,
-
-                                  
-                                 
-                                
-                                  ElevatedButton(
-                                    child: const Text('Logout'),
-                                    onPressed: () {
-                                      FirebaseAuth.instance
-                                          .signOut()
-                                          .then((value) {
-                                        print("Signed Out");
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-
-                                                    const SignInScreen()));
-                                      });
-                                    },
-                                  ),
-                                
-                                  SizedBox(
-
-                                    width: 10,
-                                  )
-                                ],
-                              ),
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Image.asset(
+                                      "lib/assets/logo1.png",
+                                      height: 100,
+                                      width: 150,
+                                    ),
+                                    const SizedBox(
+                                      width: 150,
+                                    ),
+                                    ElevatedButton(
+                                      child: const Text('Logout'),
+                                      onPressed: () {
+                                        FirebaseAuth.instance
+                                            .signOut()
+                                            .then((value) {
+                                          print("Signed Out");
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const SignInScreen()));
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    )
+                                  ]),
                               Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Row(
@@ -178,8 +168,7 @@ class _Mypage1State extends State<Mypage1> {
                                       child: Image.asset(
                                         'lib/assets/children.png',
                                         scale: 5,
-
-                                       ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -194,7 +183,6 @@ class _Mypage1State extends State<Mypage1> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.white,
-
                                     boxShadow: [
                                       BoxShadow(
                                         color: const Color.fromARGB(
@@ -209,9 +197,7 @@ class _Mypage1State extends State<Mypage1> {
                                   child: Row(
                                     children: [
                                       Container(
-
                                         height: 170,
-
 
                                         width: 210,
                                         //child: Lottie.asset('assets/hos.json'),
@@ -224,7 +210,6 @@ class _Mypage1State extends State<Mypage1> {
                                             'How do u feel today',
                                             style: TextStyle(
                                               fontSize: 15,
-
                                             ),
                                           ),
                                           Center(
@@ -232,14 +217,10 @@ class _Mypage1State extends State<Mypage1> {
                                           ),
                                         ],
                                       ),
-                                      ],
-
-                                          
-                                       
+                                    ],
                                   ),
                                 ),
                               ),
-                            
 
                               const SizedBox(height: 1),
 
@@ -250,29 +231,22 @@ class _Mypage1State extends State<Mypage1> {
                                   'Top Hospitals For You ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
-
                                     fontSize: 20,
                                   ),
                                 ),
                               ),
                               const CardsWidget(),
-
-
-                         
-
                             ],
                           ),
                         ),
                       ),
                       bottomNavigationBar: CurvedNavigationBar(
-
                         height: 45,
                         index: index,
                         items: items,
                         backgroundColor: Colors.white10,
                         color: const Color.fromARGB(255, 85, 164, 244),
                         animationDuration: const Duration(milliseconds: 300),
-
                         onTap: (index) {
                           //Handle button tap
                         },
