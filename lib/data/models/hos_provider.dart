@@ -13,3 +13,13 @@ class HosModelDetailsProvider with ChangeNotifier {
     notifyListeners();
   }
 }
+// class HosModelDetailsProvider with ChangeNotifier {
+//   HospitalModel hospitalDetails;
+
+//   HosModelDetailsProvider()
+//       : hospitalDetails = HospitalModel(desc: "loading...", name: "loading...");
+//   Future<void> getData({required String hospitalId}) async {
+//     hospitalDetails = await CloudFire().getDescAndName(hospitalId: hospitalId);
+//     notifyListeners();
+//   }
+// }
