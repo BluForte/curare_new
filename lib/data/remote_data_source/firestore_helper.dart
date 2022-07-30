@@ -16,9 +16,10 @@ class FirestoreHelper {
   
     var data = await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
-    UserModel _user = UserModel.fromSnapshot(data);
+    UserModel user =   UserModel.fromSnapshot(data);
+  
     
-    return _user;
+    return user;
 
 
   }
@@ -33,7 +34,10 @@ class FirestoreHelper {
     final newUser = UserModel(
       pid: uid,
         pname: user.pname,
-        pno: user.pno
+        pno: user.pno,
+        page: user.page,
+        psex: user.psex,
+
     ).toJson();
 
     try {
@@ -51,7 +55,9 @@ class FirestoreHelper {
     final newUser = UserModel(
         pid: user.pid,
         pname: user.pname,
-        pno: user.pno
+        pno: user.pno,
+        page: user.page,
+        psex: user.psex
     ).toJson();
 
     try {

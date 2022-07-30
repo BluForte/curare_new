@@ -37,6 +37,7 @@ class _Mypage1State extends State<Mypage1> {
     final user = await FirestoreHelper.readUser();
     setState(() {
       username = user.pname;
+      print(username);
     });
   }
 
@@ -117,8 +118,11 @@ class _Mypage1State extends State<Mypage1> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
+                                  
                                   if(snapshot.hasData)
+                                  
                                   Text(
+                                   
                                     // Greeting with username
                                     username == null ? 
                                     'Hi ' : 'Hi $username',

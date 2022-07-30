@@ -1,13 +1,16 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 class UserModel {
   final String? pid;
   final String? pname;
   final String? pno;
+  final String? page;
+  final String? psex;
   
 
-  UserModel({this.pname, this.pno, this.pid});
+  UserModel({this.pname, this.pno, this.pid, this.page,this.psex});
 
   factory UserModel.fromSnapshot(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
@@ -16,13 +19,18 @@ class UserModel {
       pname: snapshot['Patient Name'],
       pno: snapshot['Phone Number'],
       pid: snapshot['Patient Id'],
+      page: snapshot['Age'],
+      psex: snapshot['Sex'],
     );
   }
+  
 
   Map<String, dynamic> toJson() => {
     "Patient Name": pname,
     "Phone Number": pno,
     "Patient Id": pid,
+    "Patient Age": page,
+    "Sex":psex,
   };
 }
 // class UserModel1 {
