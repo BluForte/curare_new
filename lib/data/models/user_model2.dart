@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserModel3{
+class UserModel3 {
   final String? did;
   final String? dname;
   final String? ddes;

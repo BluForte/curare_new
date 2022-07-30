@@ -1,11 +1,9 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   final String? pid;
   final String? pname;
   final String? pno;
-  
 
   UserModel({this.pname, this.pno, this.pid});
 
@@ -20,10 +18,10 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() => {
-    "Patient Name": pname,
-    "Phone Number": pno,
-    "Patient Id": pid,
-  };
+        "Patient Name": pname,
+        "Phone Number": pno,
+        "Patient Id": pid,
+      };
 }
 // class UserModel1 {
 //   final String? pid;
