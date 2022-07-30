@@ -110,7 +110,8 @@ class _Mypage1State extends State<Mypage1> {
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
 
                                   const SizedBox(
@@ -122,7 +123,7 @@ class _Mypage1State extends State<Mypage1> {
                                     width: 150,
                                   ),
                                   const SizedBox(
-                                    width: 150,
+                                    width: 130,),
 
                                   
                                  
@@ -144,10 +145,10 @@ class _Mypage1State extends State<Mypage1> {
                                     },
                                   ),
                                 
-                                  SizedBox(
+                                  // SizedBox(
 
-                                    width: 10,
-                                  )
+                                  //   width: 10,
+                                  // )
                                 ],
                               ),
                               Padding(
@@ -163,7 +164,7 @@ class _Mypage1State extends State<Mypage1> {
                                           username == null
                                               ? 'Hi '
                                               : 'Hi $username',
-                                          style: GoogleFonts.dancingScript(
+                                          style: GoogleFonts.openSans(
                                               fontSize: 29,
                                               fontWeight: FontWeight.bold)),
                                     //Icon
@@ -177,7 +178,7 @@ class _Mypage1State extends State<Mypage1> {
                                       ),
                                       child: Image.asset(
                                         'lib/assets/children.png',
-                                        scale: 5,
+                                        scale: 8,
 
                                        ),
                                     ),

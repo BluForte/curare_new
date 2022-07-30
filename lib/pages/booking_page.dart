@@ -1,4 +1,7 @@
+import 'package:curare/pages/cardiologist.dart';
 import 'package:curare/pages/departments.dart';
+import 'package:curare/pages/gynecologist.dart';
+import 'package:curare/pages/pediatrican.dart';
 import 'package:flutter/material.dart';
 import 'package:curare/data/models/hos_provider.dart';
 import 'package:provider/provider.dart';
@@ -76,7 +79,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Mypage1(),
+                        builder: (context) => Doctors1(),
                       ));
                 },
                 child: Column(
@@ -114,7 +117,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Mypage1(),
+                        builder: (context) => Doctors2(),
                       ));
                 },
                 child: Column(
@@ -152,7 +155,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Mypage1(),
+                        builder: (context) => Doctors3(),
                       ));
                 },
                 child: Column(
