@@ -15,9 +15,12 @@ class FirestoreHelper {
     var data =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
-    UserModel _user = UserModel.fromSnapshot(data);
+    UserModel user =   UserModel.fromSnapshot(data);
+  
+    
+    return user;
 
-    return _user;
+
   }
 
   static Future create(UserModel user) async {
@@ -27,8 +30,14 @@ class FirestoreHelper {
     final uid = FirebaseAuth.instance.currentUser!.uid;
     final docRef = userCollection.doc(uid);
 
-    final newUser =
-        UserModel(pid: uid, pname: user.pname, pno: user.pno).toJson();
+    final newUser = UserModel(
+      pid: uid,
+        pname: user.pname,
+        pno: user.pno,
+        page: user.page,
+        psex: user.psex,
+
+    ).toJson();
 
     try {
       await docRef.set(newUser);
@@ -42,8 +51,13 @@ class FirestoreHelper {
 
     final docRef = userCollection.doc(user.pid);
 
-    final newUser =
-        UserModel(pid: user.pid, pname: user.pname, pno: user.pno).toJson();
+    final newUser = UserModel(
+        pid: user.pid,
+        pname: user.pname,
+        pno: user.pno,
+        page: user.page,
+        psex: user.psex
+    ).toJson();
 
     try {
       await docRef.update(newUser);

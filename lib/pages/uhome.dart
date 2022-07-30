@@ -32,6 +32,7 @@ class _Mypage1State extends State<Mypage1> {
     final user = await FirestoreHelper.readUser();
     setState(() {
       username = user.pname;
+      print(username);
     });
   }
 
@@ -88,8 +89,24 @@ class _Mypage1State extends State<Mypage1> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+<<<<<<< HEAD
                                   SizedBox(
                                     width: 10,
+=======
+                                  
+                                  if(snapshot.hasData)
+                                  
+                                  Text(
+                                   
+                                    // Greeting with username
+                                    username == null ? 
+                                    'Hi ' : 'Hi $username',
+                                  
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+>>>>>>> anson
                                   ),
                                   Image.asset(
                                     "lib/assets/logo1.png",
