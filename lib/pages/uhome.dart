@@ -1,5 +1,6 @@
 import 'package:curare/data/remote_data_source/firestore_helper.dart';
 import 'package:curare/pages/token_page.dart';
+import 'package:curare/pages/user_profile.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
@@ -80,10 +81,19 @@ class _Mypage1State extends State<Mypage1> {
         size: 30,
         color: Colors.white,
       ),
-      const Icon(
-        Icons.person,
-        size: 30,
-        color: Colors.white,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UP(),
+              ));
+        },
+        child: const Icon(
+          Icons.person,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
     ];
     return Scaffold(
