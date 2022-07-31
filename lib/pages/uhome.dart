@@ -89,15 +89,14 @@ class _Mypage1State extends State<Mypage1> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  
                                   // if(snapshot.hasData)
-                                  
+
                                   // Text(
-                                   
+
                                   //   // Greeting with username
-                                  //   username == null ? 
+                                  //   username == null ?
                                   //   'Hi ' : 'Hi $username',
-                                  
+
                                   //   style: TextStyle(
                                   //     fontSize: 24,
                                   //     fontWeight: FontWeight.bold,
@@ -114,16 +113,18 @@ class _Mypage1State extends State<Mypage1> {
                                   ElevatedButton(
                                     child: const Text('Logout'),
                                     onPressed: () {
-                                      FirebaseAuth.instance
-                                          .signOut()
-                                          .then((value) {
-                                        print("Signed Out");
-                                        Navigator.push(
+                                      FirebaseAuth.instance.signOut().then(
+                                        (value) {
+                                          print("Signed Out");
+                                          Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignInScreen()));
-                                      });
+                                              builder: (context) =>
+                                                  SignInScreen(),
+                                            ),
+                                          );
+                                        },
+                                      );
                                     },
                                   ),
                                   SizedBox(

@@ -70,8 +70,12 @@ class _SignInScreenState extends State<SignInScreen> {
                             email: _emailTextController.text,
                             password: _passwordTextController.text)
                         .then((value) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AuthPages()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AuthPages(),
+                        ),
+                      );
                     }).onError(
                       (error, stackTrace) {
                         // Add a dialog box
