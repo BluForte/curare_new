@@ -1,4 +1,3 @@
-
 import 'package:curare/data/models/hos_provider.dart';
 import 'package:curare/data/models/hospital_provider.dart';
 
