@@ -60,7 +60,7 @@ class _ProfileUI2State extends State<EditPage> {
               child: Container(
                 alignment: Alignment(0.0, 2.5),
                 child: const CircleAvatar(
-                  backgroundColor: Colors.lightBlue,
+                  backgroundColor: Color.fromARGB(255, 134, 100, 234),
                   //backgroundImage: AssetImage("assete/c3.JPG"),
                   radius: 70.0,
                   child: Icon(
@@ -95,7 +95,7 @@ class _ProfileUI2State extends State<EditPage> {
                         Text(
                           "Name",
                           style: TextStyle(
-                            fontSize: 12.0, color: Colors.blueGrey,
+                            fontSize: 12.0, color: Color.fromARGB(255, 255, 255, 255),
                             //letterSpacing: 2.0,
                             //fontWeight: FontWeight.w800
                           ),
@@ -114,7 +114,7 @@ class _ProfileUI2State extends State<EditPage> {
                         Text(
                           widget.user.dname!,
                           style: TextStyle(
-                            fontSize: 22.0, color: Colors.black,
+                            fontSize: 25.0, color: Color.fromARGB(255, 0, 0, 0),
                             // letterSpacing: 2.0,
                             //fontWeight: FontWeight.w800
                           ),
@@ -185,7 +185,7 @@ class _ProfileUI2State extends State<EditPage> {
                 onPressed: () {
                   //TODO FORGOT PASSWORD SCREEN GOES HERE
                  },
-                color: Colors.lightBlue,
+                color: Color.fromARGB(255, 131, 86, 255),
                 child: Text(
                   'go to payments',
                   style: TextStyle(color: Colors.white, fontSize: 15),
@@ -204,7 +204,7 @@ class _ProfileUI2State extends State<EditPage> {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
-          color:Colors.lightBlue),
+          color:Color.fromARGB(255, 160, 95, 252)),
       child: Container(
         padding: EdgeInsets.all(10),
         child: Row(
@@ -221,15 +221,15 @@ class _ProfileUI2State extends State<EditPage> {
                   Text(
                     date,
                     style: TextStyle(
-                        color: Colors.lightBlue,
+                        color: Color.fromARGB(255, 150, 99, 244),
                         fontSize: 30,
                         fontWeight: FontWeight.w800),
                   ),
                   Text(
                     month,
                     style: TextStyle(
-                        color: Colors.lightBlue,
-                        fontSize: 20,
+                        color: Color.fromARGB(255, 179, 116, 255),
+                        fontSize: 12,
                         fontWeight: FontWeight.w800),
                   )
                 ],

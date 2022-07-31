@@ -8,6 +8,30 @@ class FirestoreHelper21 {
     return userCollection.snapshots().map((querySnapshot) =>
         querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
   }
+  }
+ class FirestoreHelper22 {
+  static Stream<List<UserModel3>> read() {
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Pediatrician');
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
+  }
+ }
+
+ class FirestoreHelper23 {
+  static Stream<List<UserModel3>> read() {
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Gynecologist');
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
+  }
+ }
+ 
+  class FirestoreHelper24 {
+  static Stream<List<UserModel3>> read() {
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Cardiologist');
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
+  }
+ }
   
 
   // static Future<UserModel2> readUser() async {
@@ -59,27 +83,4 @@ class FirestoreHelper21 {
 
 //     final docRef = userCollection.doc(user.did).delete();
 //   }
- }
- class FirestoreHelper22 {
-  static Stream<List<UserModel3>> read() {
-    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Pediatrician');
-    return userCollection.snapshots().map((querySnapshot) =>
-        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
-  }
- }
-
- class FirestoreHelper23 {
-  static Stream<List<UserModel3>> read() {
-    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Gynecologist');
-    return userCollection.snapshots().map((querySnapshot) =>
-        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
-  }
- }
  
-  class FirestoreHelper24 {
-  static Stream<List<UserModel3>> read() {
-    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Cardiologist');
-    return userCollection.snapshots().map((querySnapshot) =>
-        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
-  }
- }

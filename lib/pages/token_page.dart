@@ -31,7 +31,7 @@ class MyCardWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Colors.yellowAccent,
+        color: Color.fromARGB(255, 255, 0, 157),
         elevation: 10,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -52,7 +52,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   " Patient Name",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -87,7 +87,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Age",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -122,7 +122,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Gender",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -157,7 +157,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Doctor",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -192,7 +192,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Hospital",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -227,7 +227,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Token Number",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 250, 250, 250),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -262,7 +262,7 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Time Slot",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
