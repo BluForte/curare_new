@@ -1,5 +1,4 @@
 // ignore_for_file: sort_child_properties_last
-
 import 'package:curare/data/models/user_model2.dart';
 //import 'package:curare/data/models/user_model2.dart';
 import 'package:curare/data/remote_data_source/firestore_helper2.dart';
@@ -11,14 +10,14 @@ import 'package:curare/dprofile.dart';
 
 
 
-class Doctors extends StatefulWidget {
-  const Doctors({Key? key}) : super(key: key);
+class Doctors2 extends StatefulWidget {
+  const Doctors2({Key? key}) : super(key: key);
 
   @override
-  State<Doctors> createState() => _DoctorsState();
+  State<Doctors2> createState() => _DoctorsState();
 }
 
-class _DoctorsState extends State<Doctors> {
+class _DoctorsState extends State<Doctors2> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
   // Future<ParseUser?> getUser() async {
@@ -37,12 +36,12 @@ class _DoctorsState extends State<Doctors> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Neurologists"),
+          title: const Text("Gynecologist"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<List<UserModel3>>(
-                    stream: FirestoreHelper21.read(),
+                    stream: FirestoreHelper23.read(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Center(

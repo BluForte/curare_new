@@ -1,6 +1,11 @@
+import 'package:curare/pages/cardiologist.dart';
 import 'package:curare/pages/departments.dart';
+import 'package:curare/pages/gynecologist.dart';
+import 'package:curare/pages/pediatrican.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:curare/data/models/hos_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:curare/data/models/hospital_provider.dart';
 
 import 'uhome.dart';
 
@@ -14,12 +19,35 @@ class BookingWidget extends StatefulWidget {
 class _BookingWidgetState extends State<BookingWidget> {
   @override
   Widget build(BuildContext context) {
+    HospitalModel h1 =
+        Provider.of<HosModelDetailsProvider>(context).hospitalDetails;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book Appointment"),
+        title: Text(h1.name),
       ),
       body: ListView(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              height: 150,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 228, 220, 220),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 25),
+                  Text(
+                    h1.desc,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(10),
             child: Container(
@@ -71,7 +99,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Mypage1(),
+                        builder: (context) => Doctors1(),
                       ));
                 },
                 child: Column(
@@ -109,7 +137,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Mypage1(),
+                        builder: (context) => Doctors2(),
                       ));
                 },
                 child: Column(
@@ -147,7 +175,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Mypage1(),
+                        builder: (context) => Doctors3(),
                       ));
                 },
                 child: Column(

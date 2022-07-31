@@ -1,3 +1,4 @@
+import 'package:curare/pages/booking_page.dart';
 import 'package:flutter/material.dart';
 
 class CardsWidget extends StatelessWidget {
@@ -8,35 +9,60 @@ class CardsWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
+              padding: EdgeInsets.symmetric(vertical: 1),
               child: Container(
-                width: 170,
-                height: 200,
-
+                width: 330,
+                height: 270,
                 decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
+                        color:
+                            Color.fromARGB(255, 192, 145, 220).withOpacity(0.5),
                         spreadRadius: 3,
                         blurRadius: 10,
                         offset: Offset(0, 3),
                       ),
                     ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Container(
-                          //child: Image.asset("assets/bg.png"),
-                          ),
-                    ],
-                  ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookingWidget(),
+                        ));
+                  },
+                  child: Image.asset("lib/assets/chc.png", scale: 0.8),
+                ),
+
+                //image
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 7),
+              child: Container(
+                width: 330,
+                height: 270,
+
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Color.fromARGB(255, 97, 172, 201).withOpacity(0.5),
+                        spreadRadius: 3,
+                        blurRadius: 10,
+                        offset: Offset(0, 3),
+                      ),
+                    ]),
+                child: Container(
+                  child: Image.asset("lib/assets/new.png", height: 100),
                 ),
                 //image
               ),
@@ -44,150 +70,26 @@ class CardsWidget extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 7),
               child: Container(
-                width: 170,
-                height: 200,
+                width: 330,
+                height: 270,
 
                 decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
+                        color:
+                            Color.fromARGB(255, 192, 145, 220).withOpacity(0.5),
                         spreadRadius: 3,
                         blurRadius: 10,
                         offset: Offset(0, 3),
                       ),
                     ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Container(
-                          //child: Image.asset("assets/bg.png"),
-                          ),
-                    ],
-                  ),
-                ),
-                //image
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
-              child: Container(
-                width: 170,
-                height: 200,
 
-                decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      ),
-                    ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Container(
-                          //child: Image.asset("assets/bg.png"),
-                          ),
-                    ],
-                  ),
+                child: Container(
+                  child: Image.asset("lib/assets/kat.png", scale: 1),
                 ),
-                //image
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
-              child: Container(
-                width: 170,
-                height: 200,
 
-                decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      ),
-                    ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Container(
-                          //child: Image.asset("assets/bg.png"),
-                          ),
-                    ],
-                  ),
-                ),
-                //image
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
-              child: Container(
-                width: 170,
-                height: 200,
-
-                decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      ),
-                    ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Container(
-                          //child: Image.asset("assets/bg.png"),
-                          ),
-                    ],
-                  ),
-                ),
-                //image
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
-              child: Container(
-                width: 170,
-                height: 200,
-
-                decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      ),
-                    ]),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Container(
-                          //child: Image.asset("assets/bg.png"),
-                          ),
-                    ],
-                  ),
-                ),
                 //image
               ),
             ),

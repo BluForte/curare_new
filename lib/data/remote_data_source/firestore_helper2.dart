@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/models/user_model2.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 
-class FirestoreHelper2 {
+class FirestoreHelper21 {
   static Stream<List<UserModel3>> read() {
-    final userCollection = FirebaseFirestore.instance.collection("Doctors");
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Neurologist');
     return userCollection.snapshots().map((querySnapshot) =>
         querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
   }
+  
 
   // static Future<UserModel2> readUser() async {
   //   //final uid = FirebaseAuth.instance.currentUser!.uid;
@@ -58,4 +59,27 @@ class FirestoreHelper2 {
 
 //     final docRef = userCollection.doc(user.did).delete();
 //   }
+ }
+ class FirestoreHelper22 {
+  static Stream<List<UserModel3>> read() {
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Pediatrician');
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
+  }
+ }
+
+ class FirestoreHelper23 {
+  static Stream<List<UserModel3>> read() {
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Gynecologist');
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
+  }
+ }
+ 
+  class FirestoreHelper24 {
+  static Stream<List<UserModel3>> read() {
+    final userCollection = FirebaseFirestore.instance.collection("Doctors").where('designation',isEqualTo: 'Cardiologist');
+    return userCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => UserModel3.fromSnapshot(e)).toList());
+  }
  }
