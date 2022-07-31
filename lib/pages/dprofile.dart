@@ -118,7 +118,7 @@ class _DR_ProfileState extends State<DR_Profile> {
                     },
                     color: Colors.blue,
                     child: Text(
-                      'go to payments',
+                      'Generate Token',
                       style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
                   ),

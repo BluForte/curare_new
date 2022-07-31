@@ -1,4 +1,7 @@
+import 'package:curare/pages/uhome.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -8,8 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Booking Summary')),
-        backgroundColor: Colors.white,
+        appBar: AppBar(title: Text('Booking Summary'),surfaceTintColor: Color.fromARGB(115, 65, 65, 65),),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         body: MyCardWidget(),
       ),
     );
@@ -24,14 +27,14 @@ class MyCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Container(
-      width: 300,
-      height: 450,
+      width: 350,
+      height: 400,
       padding: new EdgeInsets.all(10.0),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Color.fromARGB(255, 255, 0, 157),
+        color: Color.fromARGB(255, 239, 106, 4),
         elevation: 10,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -209,7 +212,7 @@ class MyCardWidget extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  "Apollo Hospital Chennai",
+                  "Kalaketty PHC",
                   style: TextStyle(
                     fontSize: 18.0, color: Colors.black,
                     // letterSpacing: 2.0,
@@ -288,9 +291,23 @@ class MyCardWidget extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+          child: Text('Home'),
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 193, 51, 0),
+          ),
+          onPressed: () {Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => Mypage1()),
+              (Route<dynamic> route) => false);},
+        ),
           ],
         ),
       ),
-    ));
+    )
+    );
   }
 }

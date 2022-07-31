@@ -1,10 +1,12 @@
 import 'package:curare/data/models/user_model2.dart';
+import 'package:curare/pages/success.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:curare/data/models/user_model.dart';
 import 'package:curare/data/remote_data_source/firestore_helper.dart';
+
 
 
 class EditPage extends StatefulWidget {
@@ -185,11 +187,17 @@ class _ProfileUI2State extends State<EditPage> {
                 onPressed: () {
                   //TODO FORGOT PASSWORD SCREEN GOES HERE
                  },
-                color: Color.fromARGB(255, 131, 86, 255),
-                child: Text(
-                  'go to payments',
-                  style: TextStyle(color: Colors.white, fontSize: 15),
-                ),
+                color: Color.fromARGB(255, 255, 255, 255),
+                child: ElevatedButton(
+          child: Text('Generate Tokens'),
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 140, 33, 255),
+          ),
+          onPressed: () {Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const Success()),
+              (Route<dynamic> route) => false);},
+        ),
               ),
             ),
           ],

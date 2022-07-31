@@ -1,3 +1,5 @@
+import 'package:curare/pages/token_page.dart';
+import 'package:curare/pages/uhome.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -25,7 +27,7 @@ class _SuccessState extends State<Success> {
                  Lottie.network('https://assets1.lottiefiles.com/packages/lf20_s2lryxtd.json'),
                  SizedBox(height: 5),
                     
-            Text('Your payment was successfull',
+            Text('Token Generated successfully',
             textAlign: TextAlign.center),
   
            ElevatedButton(
@@ -33,7 +35,12 @@ class _SuccessState extends State<Success> {
           style: ElevatedButton.styleFrom(
             primary: Colors.green,
           ),
-          onPressed: () {},
+          onPressed: () {Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) =>  MyApp()),
+              (Route<dynamic> route) => false);
+
+          },
         ),
 
 
