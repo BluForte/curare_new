@@ -22,7 +22,7 @@ class Mypage1 extends StatefulWidget {
 }
 
 class _Mypage1State extends State<Mypage1> {
-  int index = 2;
+  int index = 0;
   ParseUser? currentUser;
   String? username;
 
