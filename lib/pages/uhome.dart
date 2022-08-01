@@ -122,7 +122,7 @@ class _Mypage1State extends State<Mypage1> {
                           child: Column(
                             children: [
                               Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     const SizedBox(
                                       width: 10,
@@ -133,7 +133,7 @@ class _Mypage1State extends State<Mypage1> {
                                       width: 150,
                                     ),
                                     const SizedBox(
-                                      width: 150,
+                                      width: 120,
                                     ),
                                     ElevatedButton(
                                       child: const Text('Logout'),

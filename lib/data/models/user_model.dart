@@ -5,12 +5,9 @@ class UserModel {
   final String? pid;
   final String? pname;
   final String? pno;
-<<<<<<< HEAD
-=======
   final String? page;
   final String? psex;
   final String? pmail;
->>>>>>> 60d651db2d768e24561a905a324e0762d8074648
 
   UserModel({this.pname, this.pno, this.pid, this.page, this.psex, this.pmail});
 
@@ -31,12 +28,9 @@ class UserModel {
         "Patient Name": pname,
         "Phone Number": pno,
         "Patient Id": pid,
-<<<<<<< HEAD
-=======
         "Patient Age": page,
         "Sex": psex,
         "Email": pmail
->>>>>>> 60d651db2d768e24561a905a324e0762d8074648
       };
 }
 // class UserModel1 {
