@@ -1,5 +1,9 @@
+import 'package:curare/data/models/hos_provider.dart';
+
 import 'package:curare/data/admin_pages/admin_home.dart';
+
 import 'package:curare/data/models/userprofile_provider.dart';
+
 import 'package:curare/firebase_options.dart';
 import 'package:curare/pages/profile_2.dart';
 import 'package:curare/screens/signup_screen.dart';
@@ -8,8 +12,6 @@ import 'package:curare/screens/signin_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:curare/data/models/hos_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
+  //da
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [

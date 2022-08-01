@@ -1,10 +1,14 @@
+import 'dart:ui';
+
 import 'package:curare/data/admin_pages/tokens.dart';
 import 'package:curare/data/remote_data_source/firestore_helper.dart';
 import 'package:curare/pages/token_page.dart';
+
 import 'package:curare/pages/user_profile.dart';
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -150,6 +154,7 @@ class _Mypage1State extends State<Mypage1> {
                                       width: 10,
                                     )
                                   ]),
+
                               Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Row(

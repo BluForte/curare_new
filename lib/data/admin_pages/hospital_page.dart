@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/admin_pages/constants.dart';
+import 'package:curare/data/models/user_model.dart';
 import 'package:curare/screens/signin_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/mfg_labs_icons.dart';
 
+import '../models/hospital_model.dart';
 import 'admin_home.dart';
 
 class HospitalPage extends StatefulWidget {
@@ -16,6 +20,11 @@ class HospitalPage extends StatefulWidget {
 }
 
 class _HospitalPageState extends State<HospitalPage> {
+  final _hospitalController = TextEditingController();
+  final _deptController = TextEditingController();
+  final _docNameController = TextEditingController();
+  final _timeSlotController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +66,7 @@ class _HospitalPageState extends State<HospitalPage> {
               const SizedBox(
                 height: 15,
               ),
+
               // Hospital Tiles
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -109,7 +119,7 @@ class _HospitalPageState extends State<HospitalPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
-                  obscureText: true,
+                  controller: _hospitalController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -133,6 +143,7 @@ class _HospitalPageState extends State<HospitalPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
+                  controller: _deptController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -155,6 +166,7 @@ class _HospitalPageState extends State<HospitalPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
+                  controller: _docNameController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -177,6 +189,7 @@ class _HospitalPageState extends State<HospitalPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
+                  controller: _timeSlotController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -198,21 +211,35 @@ class _HospitalPageState extends State<HospitalPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 60,
-                    width: 80,
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        border: Border.all(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: const Center(
-                      child: Text(
-                        'Add',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                  GestureDetector(
+                    onTap: () {
+                      final hosp = Hospital(
+                          hname: _hospitalController.text,
+                          dept: _deptController.text,
+                          doc: _docNameController.text,
+                          timeSlot: _timeSlotController.text);
+
+                      createHospital(hosp);
+
+                      Navigator.pop(context,
+                          MaterialPageRoute(builder: (context) => AdminHome()));
+                    },
+                    child: Container(
+                      height: 60,
+                      width: 80,
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          border: Border.all(color: Colors.white, width: 2),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Center(
+                        child: Text(
+                          'Add',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
@@ -224,5 +251,13 @@ class _HospitalPageState extends State<HospitalPage> {
         ),
       ),
     );
+  }
+
+  Future createHospital(Hospital hosp) async {
+    final hosptialDoc = FirebaseFirestore.instance.collection('Hospital').doc();
+    hosp.id = hosptialDoc.id;
+
+    final json = hosp.toJson();
+    await hosptialDoc.set(json);
   }
 }

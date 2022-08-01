@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:curare/pages/uhome.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+
 void main() => runApp(MyApp());
 
 /// This Widget is the main application widget.
@@ -31,7 +35,7 @@ class MyCardWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Colors.yellowAccent,
+        color: Color.fromARGB(255, 239, 106, 4),
         elevation: 10,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -52,7 +56,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   " Patient Name",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
+
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -87,7 +92,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Age",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
+
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -122,7 +128,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Gender",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
+
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -157,7 +164,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Doctor",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
+
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -192,7 +200,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Hospital",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
+
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -209,7 +218,7 @@ class MyCardWidget extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  "Apollo Hospital Chennai",
+                  "Kalaketty PHC",
                   style: TextStyle(
                     fontSize: 18.0, color: Colors.black,
                     // letterSpacing: 2.0,
@@ -227,7 +236,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Token Number",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
+                    fontSize: 14.0, color: Color.fromARGB(255, 250, 250, 250),
+
                     //letterSpacing: 2.0,
                     //fontWeight: FontWeight.w800
                   ),
@@ -262,8 +272,8 @@ class MyCardWidget extends StatelessWidget {
                 Text(
                   "Time Slot",
                   style: TextStyle(
-                    fontSize: 14.0, color: Colors.blueGrey,
-                    //letterSpacing: 2.0,
+                    fontSize: 14.0, color: Color.fromARGB(255, 255, 255, 255),
+
                     //fontWeight: FontWeight.w800
                   ),
                 ),
@@ -287,6 +297,21 @@ class MyCardWidget extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              child: Text('Home'),
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 193, 51, 0),
+              ),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => Mypage1()),
+                    (Route<dynamic> route) => false);
+              },
             ),
           ],
         ),

@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/mfg_labs_icons.dart';
 
+import '../models/hospital_model.dart';
 import 'admin_home.dart';
 
 class HospitalDetails extends StatefulWidget {
@@ -18,17 +19,8 @@ class HospitalDetails extends StatefulWidget {
 
 class _HospitalDetailsState extends State<HospitalDetails> {
   final _departmentController = TextEditingController();
-  @override
-  void disposal() {
-    _departmentController.dispose();
-    super.dispose();
-  }
-
-  Future addHospitalDetails(String department) async {
-    await FirebaseFirestore.instance.collection('Hospitals').add({
-      'Departments': department,
-    });
-  }
+  final _doctorController = TextEditingController();
+  final _timeSlotController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +74,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Hospital Name',
+                            'Hospital',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -125,6 +117,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
+                  controller: _departmentController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -157,21 +150,28 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                         fontSize: 18,
                       ),
                     ),
-                    Container(
-                      height: 40,
-                      width: 60,
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: const Center(
-                        child: Text(
-                          'Add',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                    GestureDetector(
+                      onTap: () {
+                        final depart = Hospital(
+                          dept: _departmentController.text,
+                        );
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 60,
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            border: Border.all(color: Colors.white, width: 2),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: const Center(
+                          child: Text(
+                            'Add',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ),
@@ -183,17 +183,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                 height: 20,
               ),
               // Available Departments
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  'Available Departments',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+
               const SizedBox(
                 height: 10,
               ),
@@ -223,6 +213,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
+                  controller: _doctorController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -245,6 +236,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
+                  controller: _timeSlotController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -276,21 +268,31 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                         fontSize: 18,
                       ),
                     ),
-                    Container(
-                      height: 40,
-                      width: 60,
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          border: Border.all(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: const Center(
-                        child: Text(
-                          'Add',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                    GestureDetector(
+                      onTap: () {
+                        final docDetails = Hospital(
+                          doc: _doctorController.text,
+                          timeSlot: _timeSlotController.text,
+                        );
+
+                        addDocDetails(docDetails);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 60,
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            border: Border.all(color: Colors.white, width: 2),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: const Center(
+                          child: Text(
+                            'Add',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ),
@@ -323,5 +325,21 @@ class _HospitalDetailsState extends State<HospitalDetails> {
         ),
       ),
     );
+  }
+
+  Future addDocDetails(Hospital docDetails) async {
+    final hosptialDoc = FirebaseFirestore.instance.collection('Hospital').doc();
+    docDetails.id = hosptialDoc.id;
+
+    final json = docDetails.toJson();
+    await hosptialDoc.set(json);
+  }
+
+  Future addDeptDetails(Hospital depart) async {
+    final hosptialDoc = FirebaseFirestore.instance.collection('Hospital').doc();
+    depart.id = hosptialDoc.id;
+
+    final json = depart.toJson();
+    await hosptialDoc.set(json);
   }
 }
