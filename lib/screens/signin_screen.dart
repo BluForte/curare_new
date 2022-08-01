@@ -90,16 +90,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             email: _pmail.text,
                             password: _passwordTextController.text)
                         .then((value) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AuthPages(),
-                        ),
-                      );
+                      showSuccess("User was successfully login!");
                     }).onError(
                       (error, stackTrace) {
                         // Add a dialog box
-                        print("Error ${error.toString()}");
+                        showError("Error ${error.toString()}");
                       },
                     );
                   }),
@@ -147,6 +142,52 @@ class _SignInScreenState extends State<SignInScreen> {
         onPressed: () => Navigator.push(
             context, MaterialPageRoute(builder: (context) => ResetPassword())),
       ),
+    );
+  }
+
+  // shows Error Message
+  void showError(String errorMessage) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Error!"),
+          content: Text(errorMessage),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // shows Success Message
+  void showSuccess(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Success!"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AuthPages(),
+                    ));
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
