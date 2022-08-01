@@ -1,6 +1,9 @@
 import 'package:curare/pages/departments.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:curare/data/models/hos_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:curare/data/models/hospital_provider.dart';
 
 import 'uhome.dart';
 
@@ -14,9 +17,11 @@ class BookingWidget extends StatefulWidget {
 class _BookingWidgetState extends State<BookingWidget> {
   @override
   Widget build(BuildContext context) {
+    HospitalModel h1 =
+        Provider.of<HosModelDetailsProvider>(context).hospitalDetails;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book Appointment"),
+        title: Text(h1.name),
       ),
       body: ListView(
         children: [

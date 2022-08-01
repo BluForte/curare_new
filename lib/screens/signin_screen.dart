@@ -1,7 +1,13 @@
 import 'package:curare/data/admin_pages/admin_home.dart';
+import 'package:curare/data/models/userprofile_provider.dart';
 import 'package:curare/pages/auth_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:curare/reusable_widgets/reusable_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:curare/data/models/user_model.dart';
+
+import 'package:curare/data/models/hos_provider.dart';
+import 'package:curare/data/models/hospital_provider.dart';
 //import 'package:curare/screens/home_screen.dart';
 import 'package:curare/screens/reset_password.dart';
 import 'package:curare/screens/signup_screen.dart';
@@ -20,7 +26,7 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _pmail = TextEditingController();
   String? username;
   @override
   _getUserFromFirestore() async {
@@ -31,6 +37,9 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   Widget build(BuildContext context) {
+    Provider.of<HosModelDetailsProvider>(context)
+        .getData(hospitalId: "FD31aWZF21JEV9doQCtE");
+
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -51,8 +60,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter Email ", Icons.person_outline, false,
-                    _emailTextController),
+                reusableTextField(
+                    "Enter Email ", Icons.person_outline, false, _pmail),
                 const SizedBox(
                   height: 20,
                 ),
@@ -67,7 +76,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: firebaseUIButton(context, "Sign In", () {
                     FirebaseAuth.instance
                         .signInWithEmailAndPassword(
-                            email: _emailTextController.text,
+                            email: _pmail.text,
                             password: _passwordTextController.text)
                         .then((value) {
                       Navigator.push(context,

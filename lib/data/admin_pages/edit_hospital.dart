@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/admin_pages/constants.dart';
 import 'package:curare/screens/signin_screen.dart';
