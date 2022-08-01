@@ -120,7 +120,6 @@ class _HospitalPageState extends State<HospitalPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
                   controller: _hospitalController,
-                  obscureText: true,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.white),
@@ -221,6 +220,9 @@ class _HospitalPageState extends State<HospitalPage> {
                           timeSlot: _timeSlotController.text);
 
                       createHospital(hosp);
+
+                      Navigator.pop(context,
+                          MaterialPageRoute(builder: (context) => AdminHome()));
                     },
                     child: Container(
                       height: 60,

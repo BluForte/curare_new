@@ -1,13 +1,21 @@
+import 'dart:ui';
+
+import 'package:curare/data/admin_pages/tokens.dart';
 import 'package:curare/data/remote_data_source/firestore_helper.dart';
+import 'package:curare/pages/token_page.dart';
+
+import 'package:curare/pages/user_profile.dart';
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:curare/screens/signin_screen.dart';
-//import '../login_page.dart';
-import 'booking_page.dart';
+
+//import 'package:url_launcher/url_launcher.dart';
+
 import 'cards.dart';
 
 class Mypage1 extends StatefulWidget {
@@ -18,7 +26,7 @@ class Mypage1 extends StatefulWidget {
 }
 
 class _Mypage1State extends State<Mypage1> {
-  int index = 2;
+  int index = 0;
   ParseUser? currentUser;
   String? username;
 
@@ -32,36 +40,64 @@ class _Mypage1State extends State<Mypage1> {
     final user = await FirestoreHelper.readUser();
     setState(() {
       username = user.pname;
+      print(username);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      Icon(
-        Icons.home,
-        size: 30,
-        color: Colors.white,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Mypage1(),
+              ));
+        },
+        child: const Icon(
+          Icons.home,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
-      Icon(
+      const Icon(
         Icons.search,
         size: 30,
         color: Colors.white,
       ),
-      Icon(
-        Icons.generating_tokens,
-        size: 30,
-        color: Colors.white,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TokensPage(),
+              ));
+        },
+        child: const Icon(
+          Icons.generating_tokens,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
-      Icon(
+      const Icon(
         Icons.question_answer,
         size: 30,
         color: Colors.white,
       ),
-      Icon(
-        Icons.person,
-        size: 30,
-        color: Colors.white,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UP(),
+              ));
+        },
+        child: const Icon(
+          Icons.person,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
     ];
     return Scaffold(
@@ -75,50 +111,50 @@ class _Mypage1State extends State<Mypage1> {
                     child: Container(
                         width: 100,
                         height: 100,
-                        child: CircularProgressIndicator()),
+                        child: const CircularProgressIndicator()),
                   );
                 default:
                   if (snapshot.hasData) {
                     return Scaffold(
-                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                       body: SafeArea(
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Image.asset(
-                                    "lib/assets/logo1.png",
-                                    height: 60,
-                                    width: 80,
-                                  ),
-                                  SizedBox(
-                                    width: 210,
-                                  ),
-                                  ElevatedButton(
-                                    child: const Text('Logout'),
-                                    onPressed: () {
-                                      FirebaseAuth.instance
-                                          .signOut()
-                                          .then((value) {
-                                        print("Signed Out");
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignInScreen()));
-                                      });
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  )
-                                ],
-                              ),
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Image.asset(
+                                      "lib/assets/logo1.png",
+                                      height: 100,
+                                      width: 150,
+                                    ),
+                                    const SizedBox(
+                                      width: 150,
+                                    ),
+                                    ElevatedButton(
+                                      child: const Text('Logout'),
+                                      onPressed: () {
+                                        FirebaseAuth.instance
+                                            .signOut()
+                                            .then((value) {
+                                          print("Signed Out");
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const SignInScreen()));
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    )
+                                  ]),
+
                               Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Row(
@@ -127,53 +163,57 @@ class _Mypage1State extends State<Mypage1> {
                                   children: [
                                     if (snapshot.hasData)
                                       Text(
-                                        // Greeting with username
-                                        username == null
-                                            ? 'Hi '
-                                            : 'Hi $username',
 
-                                        style: const TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
+                                          // Greeting with username
+                                          username == null
+                                              ? 'Hi '
+                                              : 'Hi $username',
+                                          style: TextStyle(
+                                              fontSize: 29,
+                                              fontWeight: FontWeight.bold)),
                                     //Icon
                                     Container(
-                                      padding: EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(8),
                                       decoration: BoxDecoration(
-                                        color:
-                                            Color.fromARGB(255, 90, 174, 238),
+                                        color: const Color.fromARGB(
+                                                255, 192, 145, 220)
+                                            .withOpacity(0.5),
                                         borderRadius: BorderRadius.circular(40),
                                       ),
                                       child: Image.asset(
-                                        'lib/assets/woman.png',
-                                        scale: 7.8,
+                                        'lib/assets/children.png',
+                                        scale: 5,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                               //for animated box
-                              SizedBox(height: 5),
+
+                              const SizedBox(height: 1),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  padding: EdgeInsets.all(12),
+                                  padding: const EdgeInsets.all(12),
                                   decoration: BoxDecoration(
-                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: const Color.fromARGB(
+                                                255, 192, 145, 220)
+                                            .withOpacity(0.5),
                                         spreadRadius: 3,
                                         blurRadius: 10,
-                                        offset: Offset(0, 3),
+                                        offset: const Offset(0, 3),
                                       ),
                                     ],
                                   ),
                                   child: Row(
                                     children: [
                                       Container(
-                                        height: 180,
+                                        height: 170,
+
                                         width: 210,
                                         //child: Lottie.asset('assets/hos.json'),
                                         child: Lottie.network(
@@ -191,77 +231,21 @@ class _Mypage1State extends State<Mypage1> {
                                             child: Text('"We Exist To Care"'),
                                           ),
                                         ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Container(
-                                  padding: EdgeInsets.all(12),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.5),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 3,
-                                          blurRadius: 10,
-                                          offset: Offset(0, 3),
-                                        ),
-                                      ]),
-                                  child: Row(
-                                    children: [
-                                      SizedBox(width: 80),
-                                      Container(
-                                        height: 150,
-                                        width: 200,
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        BookingWidget()));
-                                          },
-                                          child: Container(
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  Icon(Icons.token_outlined),
-                                                  const Text(
-                                                    'BookAppointment',
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                        TextStyle(fontSize: 22),
-                                                  ),
-                                                  Container(
-                                                    height: 90,
-                                                    width: 200,
-                                                    //child: Lottie.asset('assets/hos.json'),
-                                                    child: Lottie.network(
-                                                        'https://assets6.lottiefiles.com/private_files/lf30_BP4Us7.json',
-                                                        animate: false),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
 
+                              const SizedBox(height: 1),
+
                               //cards for articles
                               const Padding(
-                                padding: EdgeInsets.only(top: 10, left: 10),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Top picks for you',
+                                  'Top Hospitals For You ',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: 20,
                                   ),
                                 ),
@@ -272,12 +256,12 @@ class _Mypage1State extends State<Mypage1> {
                         ),
                       ),
                       bottomNavigationBar: CurvedNavigationBar(
-                        height: 50,
+                        height: 45,
                         index: index,
                         items: items,
                         backgroundColor: Colors.white10,
-                        color: Color.fromARGB(255, 85, 164, 244),
-                        animationDuration: Duration(milliseconds: 300),
+                        color: const Color.fromARGB(255, 85, 164, 244),
+                        animationDuration: const Duration(milliseconds: 300),
                         onTap: (index) {
                           //Handle button tap
                         },
@@ -287,7 +271,7 @@ class _Mypage1State extends State<Mypage1> {
                     return Center(child: Text(snapshot.error.toString()));
                   }
 
-                  return SignInScreen();
+                  return const SignInScreen();
               }
             }));
   }
@@ -302,7 +286,7 @@ class _Mypage1State extends State<Mypage1> {
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => SignInScreen()),
+              MaterialPageRoute(builder: (context) => const SignInScreen()),
               (Route<dynamic> route) => false,
             );
           });
