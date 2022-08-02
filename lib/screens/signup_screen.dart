@@ -110,13 +110,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             email: _pmail.text,
                             password: _passwordTextController.text)
                         .then((value) {
-                      print("Created New Account");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInScreen()));
+                      showSuccess();
                     }).onError((error, stackTrace) {
-                      print("Error ${error.toString()}");
+                      showError("Error ${error.toString()}");
                     });
                     await FirestoreHelper.create(UserModel(
                         pname: _pname.text,
@@ -133,4 +129,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   container({required Container child}) {}
+
+  void showSuccess() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Success!"),
+          content: const Text("User was successfully created!"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignInScreen(),
+                    ));
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showError(String errorMessage) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Error!"),
+          content: Text(errorMessage),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
