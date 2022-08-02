@@ -90,7 +90,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             email: _pmail.text,
                             password: _passwordTextController.text)
                         .then((value) {
-                      showSuccess("User was successfully login!");
+                      showSuccess("User login was Successful!");
                     }).onError(
                       (error, stackTrace) {
                         // Add a dialog box
