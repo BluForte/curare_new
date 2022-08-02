@@ -1,14 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:curare/data/admin_pages/constants.dart';
-import 'package:curare/data/models/user_model.dart';
-import 'package:curare/screens/signin_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:fluttericon/mfg_labs_icons.dart';
-
 import '../models/hospital_model.dart';
 import 'admin_home.dart';
 
@@ -24,6 +16,7 @@ class _HospitalPageState extends State<HospitalPage> {
   final _deptController = TextEditingController();
   final _docNameController = TextEditingController();
   final _timeSlotController = TextEditingController();
+  final _idController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -208,16 +201,18 @@ class _HospitalPageState extends State<HospitalPage> {
               const SizedBox(
                 height: 20,
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
                     onTap: () {
                       final hosp = Hospital(
-                          hname: _hospitalController.text,
-                          dept: _deptController.text,
-                          doc: _docNameController.text,
-                          timeSlot: _timeSlotController.text);
+                        hname: _hospitalController.text,
+                        dept: _deptController.text,
+                        doc: _docNameController.text,
+                        timeSlot: _timeSlotController.text,
+                      );
 
                       createHospital(hosp);
 

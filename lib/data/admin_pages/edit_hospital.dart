@@ -1,12 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/admin_pages/constants.dart';
-import 'package:curare/screens/signin_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:fluttericon/mfg_labs_icons.dart';
-
 import '../models/hospital_model.dart';
 import 'admin_home.dart';
 
@@ -73,22 +68,28 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Hospital',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                          Expanded(
+                            child: StreamBuilder<QuerySnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection('Hospital')
+                                  .snapshots(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if (!snapshot.hasData)
+                                  return const Text('Loading...');
+                                return ListView(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  children: snapshot.data!.docs
+                                      .map((DocumentSnapshot document) {
+                                    return ListTile(
+                                      title: Text(document['Hospital']),
+                                    );
+                                  }).toList(),
+                                );
+                              },
                             ),
-                          ),
-                          Text(
-                            'Location',
-                            style: TextStyle(
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
-                          ),
+                          )
                         ],
                       ),
                     ],

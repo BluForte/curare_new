@@ -1,17 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curare/data/admin_pages/edit_hospital.dart';
-import 'package:curare/data/models/hospital_model.dart';
-import 'package:curare/data/remote_data_source/firestore_helper.dart';
 import 'package:curare/data/admin_pages/hospital_page.dart';
 import 'package:curare/data/admin_pages/tokens.dart';
 import 'package:curare/screens/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:fluttericon/mfg_labs_icons.dart';
 
 class AdminHome extends StatefulWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -19,6 +13,8 @@ class AdminHome extends StatefulWidget {
   @override
   State<AdminHome> createState() => _AdminHomeState();
 }
+
+final dateController = TextEditingController();
 
 class _AdminHomeState extends State<AdminHome> {
   Widget build(BuildContext context) {
@@ -49,7 +45,7 @@ class _AdminHomeState extends State<AdminHome> {
               height: 100,
               child: Row(
                 // Navigation Containers
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -80,41 +76,33 @@ class _AdminHomeState extends State<AdminHome> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 90,
-                    width: 90,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.blueGrey,
-                        border: Border.all(color: Colors.white, width: 3),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: const Center(
-                      child: Text(
-                        'test',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 21,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 90,
-                    width: 90,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey,
-                      border: Border.all(color: Colors.white, width: 3),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'test',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 21,
+
+                  // Calender Container
+                  GestureDetector(
+                    onTap: () async {
+                      var date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2010),
+                          lastDate: DateTime(2100));
+                      dateController.text = date.toString().substring(0, 10);
+                    },
+                    child: Container(
+                      height: 90,
+                      width: 200,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey,
+                          border: Border.all(color: Colors.white, width: 3),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Center(
+                        child: Text(
+                          'Calender',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21,
+                          ),
                         ),
                       ),
                     ),
