@@ -25,7 +25,7 @@ class _TokensPageState extends State<TokensPage> {
               ),
             );
           },
-          icon: Icon(
+          icon: const Icon(
             FontAwesome.left_big,
           ),
         ),
@@ -80,7 +80,7 @@ class _TokensPageState extends State<TokensPage> {
                               horizontal: 20, vertical: 5),
                           child: Container(
                             alignment: Alignment.center,
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
                               border: Border.all(color: Colors.white, width: 2),

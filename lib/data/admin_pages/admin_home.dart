@@ -17,10 +17,11 @@ class AdminHome extends StatefulWidget {
 final dateController = TextEditingController();
 
 class _AdminHomeState extends State<AdminHome> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Admin Dashboard'),
+        title: const Text('Admin Dashboard'),
         backgroundColor: Colors.grey[900],
         actions: [
           IconButton(
@@ -32,20 +33,20 @@ class _AdminHomeState extends State<AdminHome> {
                 ),
               );
             },
-            icon: Icon(FontAwesome.plus),
+            icon: const Icon(FontAwesome.plus),
           ),
         ],
       ),
       backgroundColor: Colors.grey[200],
-      body: Container(
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(5),
-              height: 100,
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(5),
+            height: 100,
+            child: SingleChildScrollView(
               child: Row(
                 // Navigation Containers
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -70,7 +71,7 @@ class _AdminHomeState extends State<AdminHome> {
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 19,
                           ),
                         ),
                       ),
@@ -83,7 +84,7 @@ class _AdminHomeState extends State<AdminHome> {
                       var date = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
-                          firstDate: DateTime(2010),
+                          firstDate: DateTime(2021),
                           lastDate: DateTime(2100));
                       dateController.text = date.toString().substring(0, 10);
                     },
@@ -114,7 +115,7 @@ class _AdminHomeState extends State<AdminHome> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignInScreen(),
+                              builder: (context) => const SignInScreen(),
                             ),
                           );
                         },
@@ -139,89 +140,88 @@ class _AdminHomeState extends State<AdminHome> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    'Hospitals',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'Hospitals',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
                   ),
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-              ],
-            ),
-            // Hospital Tiles
-            StreamBuilder(
-              stream:
-                  FirebaseFirestore.instance.collection('Hospital').snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
+              ),
+              SizedBox(
+                height: 15,
+              ),
+            ],
+          ),
+          // Hospital Tiles
+          StreamBuilder(
+            stream:
+                FirebaseFirestore.instance.collection('Hospital').snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-                return Expanded(
-                  child: ListView(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    children: snapshot.data!.docs.map((document) {
-                      return Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 5),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HospitalDetails(),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: 600,
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                border:
-                                    Border.all(color: Colors.white, width: 2),
-                                borderRadius: BorderRadius.circular(10),
+              return Expanded(
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  children: snapshot.data!.docs.map((document) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 5),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HospitalDetails(),
                               ),
-                              child: Text(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "Hospital: " + document['Hospital'],
-                                style: TextStyle(
-                                  color: Colors.grey[700],
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                ),
+                            );
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: 600,
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              border: Border.all(color: Colors.white, width: 2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              // ignore: prefer_interpolation_to_compose_strings
+                              "Hospital: " + document['Hospital'],
+                              style: TextStyle(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
                               ),
                             ),
                           ),
                         ),
-                      );
-                    }).toList(),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

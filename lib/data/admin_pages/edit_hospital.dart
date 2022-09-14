@@ -31,7 +31,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
               ),
             );
           },
-          icon: Icon(FontAwesome.left_big),
+          icon: const Icon(FontAwesome.left_big),
         ),
       ),
       backgroundColor: Colors.grey[200],
@@ -75,8 +75,9 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                                   .snapshots(),
                               builder: (BuildContext context,
                                   AsyncSnapshot<QuerySnapshot> snapshot) {
-                                if (!snapshot.hasData)
+                                if (!snapshot.hasData) {
                                   return const Text('Loading...');
+                                }
                                 return ListView(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
@@ -190,7 +191,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
               ),
 
               // Department Tile
-              DepartmentTile(),
+              const DepartmentTile(),
 
               const SizedBox(
                 height: 30,

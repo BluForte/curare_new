@@ -32,7 +32,7 @@ class _HospitalPageState extends State<HospitalPage> {
               ),
             );
           },
-          icon: Icon(FontAwesome.left_big),
+          icon: const Icon(FontAwesome.left_big),
         ),
       ),
       backgroundColor: Colors.grey[200],
@@ -216,8 +216,10 @@ class _HospitalPageState extends State<HospitalPage> {
 
                       createHospital(hosp);
 
-                      Navigator.pop(context,
-                          MaterialPageRoute(builder: (context) => AdminHome()));
+                      Navigator.pop(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdminHome()));
                     },
                     child: Container(
                       height: 60,
